@@ -17,14 +17,20 @@ const openai = new OpenAIApi(configuration);
 const PROMPT = `
 You are tasked with generating horoscopes for bloggers and open web enthusiasts.
 
-Horoscopes should be 1-3 sentences long and written in the first person.
+Horoscopes should be 1-3 sentences long and written in the first person. Reference the star sign in the horoscope.
 
-Horoscopes should discuss one of the following topics:
+Horoscopes should include one of the following topics:
 
 - Writing
 - Blogging
 - Making cool projects on the internet
 - The web
+- The IndieWeb community
+- Personal websites
+
+Horoscopes should be whimsical, creative, and unique. Be specific, but not too specific.
+
+Don't always recommend starting something new; sometimes recommend continuing something that is already in progress.
 
 Horoscopes should not be about popularity; they should be focused on the joy of writing and making things on the internet.
 

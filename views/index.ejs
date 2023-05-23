@@ -77,20 +77,21 @@
         </footer>
         <script>
             function retrieveHoroscope () {
+                var horoscope = document.getElementById('horoscope');
+
                 // show loading
-                console.log('Loading...');
-                document.getElementById('horoscope').innerHTML = 'Loading...';
-                document.getElementById('horoscope').style.display = 'block';
+                horoscope.innerHTML = 'Loading...';
+                horoscope.style.display = 'block';
 
                 // change loading to . .. ...
                 setTimeout(function () {
                     // every 500ms, add a dot
-                    if (document.getElementById('horoscope').innerHTML === 'Loading...') {
-                        document.getElementById('horoscope').innerHTML = 'Loading.';
-                    } else if (document.getElementById('horoscope').innerHTML === 'Loading.') {
-                        document.getElementById('horoscope').innerHTML = 'Loading..';
-                    } else if (document.getElementById('horoscope').innerHTML === 'Loading..') {
-                        document.getElementById('horoscope').innerHTML = 'Loading...';
+                    if (horoscope.innerHTML === 'Loading...') {
+                        horoscope.innerHTML = 'Loading.';
+                    } else if (horoscope.innerHTML === 'Loading.') {
+                        horoscope.innerHTML = 'Loading..';
+                    } else if (horoscope.innerHTML === 'Loading..') {
+                        horoscope.innerHTML = 'Loading...';
                     }
                 }, 500);
 
@@ -105,8 +106,7 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
-                    document.getElementById('horoscope').innerHTML = data.response.content;
+                    horoscope.innerHTML = data.response.content;
                 });
             }
 
