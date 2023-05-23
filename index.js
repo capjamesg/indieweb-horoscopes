@@ -49,13 +49,17 @@ app.get("/", async (req, res) => {
 app.post("/", async (req, res) => {
     var star_sign = req.body.starSign;
 
-    const completion = await openai.createChatCompletion({
-        model: "gpt-3.5-turbo",
-        messages: [
-            {role: "system", content: PROMPT},
-            {role: "user", content: `I am a ${star_sign}. Provide a horoscope.`}
-        ],
-    });
+    try {
+        const completion = await openai.createChatCompletion({
+            model: "gpt-3.5-turbo",
+            messages: [
+                {role: "system", content: PROMPT},
+                {role: "user", content: `I am a ${star_sign}. Provide a horoscope.`}
+            ],
+        });
+    } catch (error) {
+        res.json({"response": "Sorry, something went wrong. Please try again."});
+    }
 
     // return json
     res.json({"response": completion.data.choices[0].message});
